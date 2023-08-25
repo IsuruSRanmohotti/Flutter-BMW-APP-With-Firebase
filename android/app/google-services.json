@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1016374847819",
+    "project_id": "bmw-flutter",
+    "storage_bucket": "bmw-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016374847819:android:8c3c6ac40bebda8ba560ce",
+        "android_client_info": {
+          "package_name": "com.example.ce_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016374847819-0aumm5e5dlrpvor6f417cfen8spme01a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg8B9Cf-JlwQbvPTVoDjG1qPiB6mH1ENQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016374847819-0aumm5e5dlrpvor6f417cfen8spme01a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016374847819:android:dc7621b2577a4d5fa560ce",
+        "android_client_info": {
+          "package_name": "lk.ceylonedge.bmw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016374847819-0aumm5e5dlrpvor6f417cfen8spme01a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg8B9Cf-JlwQbvPTVoDjG1qPiB6mH1ENQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016374847819-0aumm5e5dlrpvor6f417cfen8spme01a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
