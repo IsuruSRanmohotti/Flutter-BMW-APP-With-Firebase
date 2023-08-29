@@ -1,7 +1,6 @@
 import 'package:ce_store/models/car_model.dart';
 import 'package:ce_store/models/cart_model.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 class CartProvider extends ChangeNotifier {
   int _quantity = 1;

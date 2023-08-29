@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
-
 import 'firebase_options.dart';
 import 'screens/splash_screen/splash_screen.dart';
 
