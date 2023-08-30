@@ -4,6 +4,9 @@ import 'package:ce_store/components/custom_textfield/custom_textfield.dart';
 import 'package:ce_store/controllers/auth_controller.dart';
 import 'package:ce_store/providers/user_provider.dart';
 import 'package:ce_store/screens/home/admin/add_product.dart';
+import 'package:ce_store/screens/home_slider/slider_update.dart';
+import 'package:ce_store/screens/orders/my_orders.dart';
+import 'package:ce_store/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +45,31 @@ class _ProfilePageState extends State<ProfilePage> {
               text: Provider.of<UserProvider>(context).userData!.email,
               fontSize: 20,
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                CustomNavigator.goTo(context, const MyOrders());
+              },
+              child: Container(
+                width: 100,
+                height: 35,
+                decoration: BoxDecoration(
+                    color: Colors.orange.shade800,
+                    borderRadius: BorderRadius.circular(35)),
+                child: const Center(
+                  child: CustomPoppinsText(
+                    text: "My Orders",
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             CustomTextField(
                 label: "Name",
                 controller: value.nameController,
@@ -68,6 +96,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const AddProduct(),
+                      ));
+                }),
+            const SizedBox(
+              height: 4,
+            ),
+            CustomButton1(
+                colors: [Colors.amber.shade600, Colors.amber.shade900],
+                text: "Update Home Slider",
+                size: size,
+                ontap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UpdateSlider(),
                       ));
                 }),
             const SizedBox(

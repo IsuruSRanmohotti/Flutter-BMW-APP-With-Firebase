@@ -18,6 +18,12 @@ class UserModel {
         name: map['name'],
         uid: map['uid'],
         userImage: map['userImage'],
-        favourite: List<String>.from(map['favourite']));
+        favourite: map['favourite'] == null
+            ? []
+            : List<String>.from(map['favourite']));
+  }
+
+  Map<String, dynamic> toJson() {
+    return {"name": name, "userImage": userImage, "email": email, "uid": uid};
   }
 }

@@ -145,7 +145,9 @@ class _MyCartState extends State<MyCart> {
                             fontSize: 18,
                           ),
                           CustomPoppinsText(
-                            text: "\$ ${value.calculateTotal()}",
+                            text: value.cartItems.isNotEmpty
+                                ? "\$ ${value.calculateTotal()}"
+                                : "\$ 0",
                             fontSize: 18,
                             fWeight: FontWeight.bold,
                           )
@@ -161,7 +163,8 @@ class _MyCartState extends State<MyCart> {
                           ontap: () {
                             Provider.of<PaymentProvider>(context, listen: false)
                                 .getPayment(
-                                    value.calculateTotal().toInt().toString());
+                                    value.calculateTotal().toInt().toString(),
+                                    context);
                           })
                     ],
                   ),

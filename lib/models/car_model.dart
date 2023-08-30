@@ -1,3 +1,5 @@
+import 'package:logger/logger.dart';
+
 class Car {
   String description;
   String id;
@@ -16,13 +18,30 @@ class Car {
   });
 
   factory Car.fromJson(Map<String, dynamic> map) {
-    return Car(
-        description: map["description"],
-        id: map["id"],
-        image: map["image"],
-        name: map["name"],
-        price: double.parse(map["price"]),
-        type: map["type"]);
+    try {
+      return Car(
+          description: map["description"],
+          id: map["id"],
+          image: map["image"],
+          name: map["name"],
+          price: double.parse(map["price"]),
+          type: map["type"]);
+    } catch (e) {
+      Logger().e(e);
+      return Car(
+          description: "", id: "", image: "", name: "", price: 0, type: "");
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "description": description,
+      "id": id,
+      "image": image,
+      "name": name,
+      "price": price.toString(),
+      "type": type,
+    };
   }
 }
 

@@ -1,5 +1,6 @@
 import 'package:ce_store/providers/admin_provider.dart';
 import 'package:ce_store/providers/cart_provider.dart';
+import 'package:ce_store/providers/home_slider_provider.dart';
 import 'package:ce_store/providers/homepage_provider.dart';
 import 'package:ce_store/providers/payment_provider.dart';
 import 'package:ce_store/providers/signin_provider.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
+
 import 'firebase_options.dart';
 import 'screens/splash_screen/splash_screen.dart';
 
@@ -42,6 +44,9 @@ Future<void> main() async {
       ),
       ChangeNotifierProvider(
         create: (context) => PaymentProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => HomeSliderProvider(),
       )
     ],
     child: const MyApp(),

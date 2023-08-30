@@ -1,12 +1,19 @@
+import 'package:ce_store/controllers/order_controller.dart';
 import 'package:ce_store/models/car_model.dart';
 import 'package:ce_store/models/cart_model.dart';
+import 'package:ce_store/models/order_model.dart';
+import 'package:ce_store/models/user_model.dart';
+import 'package:ce_store/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartProvider extends ChangeNotifier {
+  OrderController oController = OrderController();
   int _quantity = 1;
   int get quantity => _quantity;
-  final List<CartModel> _cartItems = [];
+  List<CartModel> _cartItems = [];
   List<CartModel> get cartItems => _cartItems;
+  double _total = 0;
 
   void increseQuantity() {
     _quantity++; //_quantity = _quantity + 1;
@@ -36,6 +43,12 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clearCart() {
+    _total = 0;
+    _cartItems = [];
+    notifyListeners();
+  }
+
   void increseCartItemQuantity(int index) {
     _cartItems[index].quantity++;
     notifyListeners();
@@ -53,6 +66,20 @@ class CartProvider extends ChangeNotifier {
     for (var item in _cartItems) {
       total += item.car.price * item.quantity;
     }
+    _total = total;
     return total;
+  }
+
+  Future<void> saveOrderDetails(BuildContext context) async {
+    UserModel user =
+        Provider.of<UserProvider>(context, listen: false).userData!;
+
+    OrderModel oModel = OrderModel(
+      totalAmount: _total,
+      id: "",
+      items: _cartItems,
+      user: user,
+    );
+    oController.saveOrder(oModel, context);
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 
@@ -10,7 +11,7 @@ class StripeService {
           Uri.parse("https://api.stripe.com/v1/payment_intents"),
           headers: {
             "Authorization":
-                "Bearer sk_test_51NdDomJFWrzBUHnSFDehtJP2eFdWAldKnmAUeYQva9DU5dNjY87tFPv8AqhTiSnnciDU94ueiFkEBea7LTi6qxEy00eoXZAlP1",
+                "Bearer ${dotenv.env["SECRET_KEY"] }",
             "Content-Type": "application/x-www-form-urlencoded"
           },
           body: {

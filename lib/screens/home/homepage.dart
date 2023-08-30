@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ce_store/components/custom_text/custom_poppins_text.dart';
 import 'package:ce_store/models/car_model.dart';
 import 'package:ce_store/providers/admin_provider.dart';
+import 'package:ce_store/providers/home_slider_provider.dart';
 import 'package:ce_store/providers/user_provider.dart';
 import 'package:ce_store/screens/product_view/product_view.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> offers = [
-    "https://e0.pxfuel.com/wallpapers/512/999/desktop-wallpaper-transport-landscape-auto-roads-mountains-bmw.jpg",
-    "https://i.pinimg.com/736x/56/f0/34/56f034a642d568e1e8f264041c19bff4--nature-landscape-wallpaper.jpg",
-    "https://wallpaperaccess.com/full/3364154.jpg",
-    "https://www.hdcarwallpapers.com/download/2014_vorsteiner_bmw_e92_m3-1920x1080.jpg",
-    "https://c4.wallpaperflare.com/wallpaper/831/669/84/green-bmw-m5-black-landscape-trees-hd-wallpaper-preview.jpg"
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,7 +51,9 @@ class _HomePageState extends State<HomePage> {
                     height: 150.0,
                     autoPlay: true,
                   ),
-                  items: offers.map((i) {
+                  items: Provider.of<HomeSliderProvider>(context)
+                      .sliderImages
+                      .map((i) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(

@@ -1,21 +1,27 @@
 import 'dart:io';
 
 import 'package:ce_store/controllers/auth_controller.dart';
+import 'package:ce_store/controllers/home_slider_controller.dart';
+import 'package:ce_store/controllers/order_controller.dart';
 import 'package:ce_store/controllers/storage_ontroller.dart';
 import 'package:ce_store/models/car_model.dart';
+import 'package:ce_store/models/order_model.dart';
 import 'package:ce_store/models/user_model.dart';
+import 'package:ce_store/providers/home_slider_provider.dart';
 import 'package:ce_store/utils/custom_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/auth/signup_page.dart';
 import '../screens/home/main_screen.dart';
 import '../utils/navigator_utils.dart';
 
 class UserProvider extends ChangeNotifier {
+  final OrderController oController = OrderController();
   List<String> _favItems = [];
   List<String> get favItems => _favItems;
   List<Car> _favouriteItems = [];
@@ -47,6 +53,9 @@ class UserProvider extends ChangeNotifier {
 
   Future<void> fetchData(uid, context) async {
     _user = await AuthController().getUserData(uid);
+    List<String> list = await HomeSliderController().getSliderImages();
+    Logger().e(list);
+    Provider.of<HomeSliderProvider>(context ,listen: false).updateSliderImageList(list);
     _favItems = _user!.favourite;
     setUserName(_user!.name);
     notifyListeners();
@@ -117,5 +126,11 @@ class UserProvider extends ChangeNotifier {
     }
     _favouriteItems = filteredList;
     notifyListeners();
+  }
+
+  Future<List<OrderModel>> getMyOrders() async {
+    List<OrderModel> orders = await oController.fetchMyOrders(_user!.uid);
+
+    return orders;
   }
 }
